@@ -3,9 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Github Finder</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Github Finder</h1>
+    </header>
+    <div class="search-bar">
+        <h1>Search Github User</h1>
+        <!-- <p>Enter a username to fetch a user profile and repos</p> -->
+        <form autocomplete="on">    
+            <label for="id-input">Github ID:</label> <!-- label과 input을 연관시키기 위해서는 label의 for 값과 input의 id값을 일치시켜야 한다 -->
+            <input type="text" placeholder="Enter Github ID" id="id-input">
+            <input type="button" value="Search">
+        </form>
+        <div class="input-error">
+            <p>Non-Existent User</p>
+        </div>
+    </div>
+    <section class="github-profile">
+        <div class="col1">
+            <img src="" alt="">
+            <button class="view-profile-img">View Profile</button>
+        </div>
+        <div class="col2">
+            <table class="private-info" border="0">
+                <tr class="company">
+                    <td>Company</td>
+                    <td>value</td>
+                </tr>
+                <tr class="blog">
+                    <td>Website/blog</td>
+                    <td>value</td>
+                </tr>
+                <tr class="location">
+                    <td>Location</td>
+                    <td>value</td>
+                </tr>
+                <tr class="sign-up-date">
+                    <td>Member Since</td>
+                    <td>value</td>
+                </tr>
+            </table>
+            <div class="activity-level-num">
+                <div id="repo" class="activity-level-element"></div>
+                <div id="gist" class="activity-level-element"></div>
+                <div id="follower" class="activity-level-element"></div>
+                <div id="following" class="activity-level-element"></div>
+            </div>
+        </div>
+    </section>
+    <section class="github-repos">
+        <h1>Latest Repos</h1>
+        <!-- 몇개의 레포가 있는지 모르는 상태이므로 일단 리스트만 만들어 놓음 
+        리스트 안에 있는 값들은 모두 js를 통해서 추가해줄 것. 레포가 있다는 가정하에 만든다.-->
+        <ul id="repo list"> 
+        </ul>
+    </section>
+    <footer>Github Finder ⓒ</footer>
+    <script src="script.js"></script>
 </body>
 </html>

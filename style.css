@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .search-bar {
+    display: none;
+} */
+/* section {
+    display:none;
+} */
+.input-error {
+    display: none
+}
