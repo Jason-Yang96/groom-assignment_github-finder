@@ -30,15 +30,19 @@ searchBtn.addEventListener('click', fetchGithubInfo);
 //함수 정의
     //깃헙 정보를 가져와 html 요소에 넣어주는 함수(하위 함수 사용) 
 async function fetchGithubInfo() {
-    //존재하지 않는 유저를 검색하는 경우 오류가 발생하고 검색 창 아래 오류 메시지를 띄움
+        //존재하지 않는 유저를 검색하는 경우 오류가 발생하고 검색 창 아래 오류 메시지를 띄움
     try {
         const githubId = inputBar.value;
         const response = await fetch(apiUrl + githubId, {
         headers : {
             'Authorization' : `Bearer ${accessToken}`
         }});
-        const data = await response.json();
-        insertComponent(data);
+        if (response.ok) {  //response 객체의 ok 속성 통해 error 여부 확인 가능
+            const data = await response.json();
+            insertComponent(data);
+        } else {
+            throw new Error("Github API request failed")
+        }
     } catch {
         document.querySelector('.input-error').style.display = 'block';
         document.querySelector('.github-profile').style.display = 'none';
