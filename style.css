@@ -11,5 +11,11 @@
     display:none;
 } */
 .input-error {
-    display: none
+    display: none;
+}
+.github-profile {
+    display: none;
+}
+.github-repos {
+    display: none;
 }
