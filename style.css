@@ -43,3 +43,23 @@ td {
 .activity-level-num {
     display: flex;
 }
+.github-repos {
+    border: solid 1px rgba(128, 128, 128, 0.39);
+    padding: 10px;
+    margin: 10px;
+}
+#repo-list-container {
+    list-style: none;
+}
+#repo-list-container li {
+    display: flex;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(128, 128, 128, 0.39);
+    padding: 10px;
+}

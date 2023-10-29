@@ -18,7 +18,7 @@ const activityLevelFollowing = document.querySelector('#following');
     //최근 레포지토리 변수
 const repoListContainer = document.querySelector('#repo-list-container');
     //api key 값과 api url 변수
-const accessToken = "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";
+const accessToken = "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";
 const apiUrl = "https://api.github.com/users/";
 
 //이벤트 함수 정의
@@ -102,15 +102,15 @@ function creatRepoComponent (array, i) {
 
     const repoActivityLevelStar = document.createElement('span');
     repoActivityLevelStar.classList.add('star');
-    repoActivityLevelStar.innerHTML = array[i].stargazers_count;
+    repoActivityLevelStar.innerHTML = "Stars: " + array[i].stargazers_count;
     
     const repoActivityLevelWatching = document.createElement('span');
     repoActivityLevelWatching.classList.add('watching');
-    repoActivityLevelWatching.innerHTML = array[i].watchers_count;
+    repoActivityLevelWatching.innerHTML = "Watchers: " + array[i].watchers_count;
     
     const repoActivityLevelFork = document.createElement('span');
     repoActivityLevelFork.classList.add('fork');
-    repoActivityLevelFork.innerHTML = array[i].forks_count;
+    repoActivityLevelFork.innerHTML = "Forks: " + array[i].forks_count;
 
         //리스트 요소에 들어가야 하는 요소 삽입하기
     repoActivityLevelContainer.append(repoActivityLevelStar);
