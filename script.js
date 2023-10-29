@@ -18,7 +18,7 @@ const activityLevelFollowing = document.querySelector('#following');
     //최근 레포지토리 변수
 const repoListContainer = document.querySelector('#repo-list-container');
     //api key 값과 api url 변수
-const accessToken = "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";
+const accessToken = "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";
 const apiUrl = "https://api.github.com/users/";
 
 //이벤트 함수 정의
