@@ -63,21 +63,51 @@ form input[type = 'button'] {
 }
 .github-profile .col2 {
     padding-left: 30px;
+    width: 100%;
+    position: relative;
 }
 table {
-    width: 200px;
+    width: 80%;
+    border: solid 1px rgba(128, 128, 128, 0.39);
+
 }
 td {
     border: solid 1px rgba(128, 128, 128, 0.39);
+    padding: 5px;
+}
+.activity-level-num {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+}
+.activity-level-element {
+    height: 30px;
+    margin-left: 10px;
+    padding: 3px 8px 3px 8px;
+    border-radius: 10px;
+}
+.activity-level-element:nth-child(1){
+    background-color: black;
+    color: white;
+}
+.activity-level-element:nth-child(2){
+    background-color: rgb(90, 100, 189);
+    color: white;
+}
+.activity-level-element:nth-child(3){
+    background-color: rgb(49, 158, 63);
+    color: white;
+}
+.activity-level-element:nth-child(4){
+    background-color: rgb(189, 165, 87);
+    color: white;
 }
 .github-repos {
     display: none;
 }
-.activity-level-num {
-    display: flex;
-}
 .github-repos {
-    border: solid 1px rgba(128, 128, 128, 0.39);
+    /* border: solid 1px rgba(128, 128, 128, 0.39); */
     padding: 10px;
     margin: 10px;
 }
@@ -86,6 +116,35 @@ td {
 }
 #repo-list-container li {
     display: flex;
+    border: 1px solid rgba(128, 128, 128, 0.39);
+    border-radius: 5px;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    position: relative;
+}
+.repo-activity-level-container {
+    position: absolute;
+    right: 200px;
+}
+.repo-activity-level-container span {
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 3px 8px 3px 8px;
+}
+.repo-activity-level-container span:nth-child(1){
+    background-color: black;
+    color: white;
+}
+.repo-activity-level-container span:nth-child(2){
+    background-color: rgb(90, 100, 189);
+    color: white;
+}
+.repo-activity-level-container span:nth-child(3){
+    background-color: rgb(49, 158, 63);
+    color: white;
 }
 footer {
     position: fixed;
@@ -94,5 +153,5 @@ footer {
     right: 0;
     text-align: center;
     background-color: rgba(128, 128, 128, 0.39);
-    padding: 10px;
+    padding: 7px;
 }
