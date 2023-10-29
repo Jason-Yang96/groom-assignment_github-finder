@@ -3,13 +3,43 @@
     padding: 0;
     box-sizing: border-box;
 }
+header {
+    background-color: black;
+    color: white;
+}
+.search-bar {
+    border: solid 1px rgba(128, 128, 128, 0.39);
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin: 10px;
+}
 
 .input-error {
     display: none;
 }
+.input-error p {
+    color: grey;
+    font-style: italic;
+}
 .github-profile {
     display: none;
+    border: solid 1px rgba(128, 128, 128, 0.39);
+    padding: 10px;
+    margin: 10px;
+}
+.github-profile button {
+    display: block;
+}
+.private-info {
+    border: solid 1px rgba(128, 128, 128, 0.39);
+}
+td {
+    border: solid 1px rgba(128, 128, 128, 0.39);
 }
 .github-repos {
     display: none;
+}
+.activity-level-num {
+    display: flex;
 }

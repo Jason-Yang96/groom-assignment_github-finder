@@ -18,7 +18,7 @@ const activityLevelFollowing = document.querySelector('#following');
     //최근 레포지토리 변수
 const repoListContainer = document.querySelector('#repo-list-container');
     //api key 값과 api url 변수
-const accessToken = "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";
+const accessToken = "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";
 const apiUrl = "https://api.github.com/users/";
 
 //이벤트 함수 정의
@@ -68,7 +68,7 @@ function insertComponent(data) {
     activityLevelFollower.innerHTML = "Public Followers: " + data.followers;
     activityLevelFollowing.innerHTML = "Public Following: " + data.following;
         //
-    document.querySelector('.github-profile').style.display = 'block';
+    document.querySelector('.github-profile').style.display = 'flex';
     document.querySelector('.github-repos').style.display = 'block';
 }
     //레포지토리 정보 길이 기준으로 가져오기
