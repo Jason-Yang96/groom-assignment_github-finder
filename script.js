@@ -18,7 +18,7 @@ const activityLevelFollowing = document.querySelector('#following');
     //최근 레포지토리 변수
 const repoListContainer = document.querySelector('#repo-list-container');
     //api key 값과 api url 변수
-const accessToken = "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";
+const accessToken = "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";
 const apiUrl = "https://api.github.com/users/";
 
 //이벤트 함수 정의
@@ -40,8 +40,10 @@ async function fetchGithubInfo() {
         const response2 = await fetch(apiUrl + githubId + '/repos');
         if (response.ok) {  //response 객체의 ok 속성 통해 error 여부 확인 가능
             const data = await response.json();
-            const repo = await response.json(); //repo 변수는 배열 객체
+            const repo = await response2.json(); //repo 변수는 배열 객체
             insertComponent(data);
+            createRepoComponentByLength(repo);
+            // console.log(repo);
         } else {
             throw new Error("Github API request failed")
         }
@@ -69,7 +71,7 @@ function insertComponent(data) {
     document.querySelector('.github-profile').style.display = 'block';
     document.querySelector('.github-repos').style.display = 'block';
 }
-    //레포지토리 정보 가져오기
+    //레포지토리 정보 길이 기준으로 가져오기
 function createRepoComponentByLength (array) {
     if (array.length === 0) {
         const emptyRepoNoti = document.createElement('span');
@@ -86,25 +88,39 @@ function createRepoComponentByLength (array) {
         }
     } 
     }
-
+    //레포지토리 정보 가져오기
 function creatRepoComponent (array, i) {
+        //리스트 요소 생성 및 레포 api 정보 할당
     const listEl = document.createElement('li');
     
     const repoTitle = document.createElement('span');
     repoTitle.classList.add('repo-title');
     repoTitle.innerHTML = array[i].name;
-    
+
     const repoActivityLevelContainer = document.createElement('div');
     repoActivityLevelContainer.classList.add('repo-activity-level-container');
-    
+
     const repoActivityLevelStar = document.createElement('span');
     repoActivityLevelStar.classList.add('star');
+    repoActivityLevelStar.innerHTML = array[i].stargazers_count;
     
-    const repoActivityLevelWatcher = document.createElement('span');
-    repoActivityLevelWatching.classList.add('watchiing');
+    const repoActivityLevelWatching = document.createElement('span');
+    repoActivityLevelWatching.classList.add('watching');
+    repoActivityLevelWatching.innerHTML = array[i].watchers_count;
     
     const repoActivityLevelFork = document.createElement('span');
     repoActivityLevelFork.classList.add('fork');
+    repoActivityLevelFork.innerHTML = array[i].forks_count;
+
+        //리스트 요소에 들어가야 하는 요소 삽입하기
+    repoActivityLevelContainer.append(repoActivityLevelStar);
+    repoActivityLevelContainer.append(repoActivityLevelWatching);
+    repoActivityLevelContainer.append(repoActivityLevelFork);
+
+    listEl.append(repoTitle);
+    listEl.append(repoActivityLevelContainer);
+
+    repoListContainer.append(listEl);
 }
 
 
