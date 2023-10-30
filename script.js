@@ -18,7 +18,7 @@ const activityLevelFollowing = document.querySelector('#following');
     //최근 레포지토리 변수
 const repoListContainer = document.querySelector('#repo-list-container');
     //api key 값과 api url 변수
-const accessToken = "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";
+const accessToken = "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";
 const apiUrl = "https://api.github.com/users/";
 
 //이벤트 함수 정의
@@ -28,7 +28,7 @@ searchBtn.addEventListener('click', fetchGithubInfo);
 // profileImgMagnifierBtn.addEventListener('click', magnifyImg);
 
 //함수 정의
-    //깃헙 정보를 가져와 html 요소에 넣어주는 함수(하위 함수 사용) 
+    //깃헙 정보를 가져와 html 요소에 넣어주는 함수(하위 함수 사용) => 소스코드 가독성을 위해서 promise all을 사용해서 정리할 것.  
 async function fetchGithubInfo() {
         //존재하지 않는 유저를 검색하는 경우 오류가 발생하고 검색 창 아래 오류 메시지를 띄움
     try {
@@ -37,17 +37,23 @@ async function fetchGithubInfo() {
         headers : {
             'Authorization' : `Bearer ${accessToken}`
         }});
-        const response2 = await fetch(apiUrl + githubId + '/repos');
+        // console.log(response);
         if (response.ok) {  //response 객체의 ok 속성 통해 error 여부 확인 가능
             const data = await response.json();
-            const repo = await response2.json(); //repo 변수는 배열 객체
             insertComponent(data);
-            createRepoComponentByLength(repo);
             // console.log(repo);
         } else {
             throw new Error("Github API request failed")
         }
-    } catch {
+        const response2 = await fetch(apiUrl + githubId + '/repos');
+        if (response2.ok) {
+            const repo = await response2.json(); //repo 변수는 배열 객            
+            createRepoComponentByLength(repo);
+        } else {
+            throw new Error("Github API request failed")
+        }
+    } catch (error){
+        console.error(error);
         document.querySelector('.input-error').style.display = 'block';
         document.querySelector('.github-profile').style.display = 'none';
         document.querySelector('.github-repos').style.display = 'none';
