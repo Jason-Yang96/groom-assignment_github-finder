@@ -18,7 +18,7 @@ const activityLevelFollowing = document.querySelector('#following');
     //최근 레포지토리 변수
 const repoListContainer = document.querySelector('#repo-list-container');
     //api key 값과 api url 변수
-const accessToken = "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";
+const accessToken = "";
 const apiUrl = "https://api.github.com/users/";
 
 //이벤트 함수 정의
@@ -26,7 +26,7 @@ const apiUrl = "https://api.github.com/users/";
 searchBtn.addEventListener('click', fetchGithubInfo);
     //개인 프로필 사진 아래 버튼을 누르면, 개인 사진이 확대된다.
 // profileImgMagnifierBtn.addEventListener('click', magnifyImg);
-
+profileImgMagnifierBtn.addEventListener('click', magnifyProfileImg)
 //함수 정의
     //깃헙 정보를 가져와 html 요소에 넣어주는 함수(하위 함수 사용) => 소스코드 가독성을 위해서 promise all을 사용해서 정리할 것.  
 async function fetchGithubInfo() {
@@ -128,5 +128,9 @@ function creatRepoComponent (array, i) {
 
     repoListContainer.append(listEl);
 }
-
+    //프로필 이미지 확대
+function magnifyProfileImg(){
+    console.log(profileImg.src);
+    window.open(profileImg.src);
+}
 
