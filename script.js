@@ -35,7 +35,7 @@ async function fetchGithubInfo() {
         const githubId = inputBar.value;
         const response = await fetch(apiUrl + githubId, {
         headers : {
-            'Authorization' : `Bearer ${accessToken}`
+            'Authorization' : `token ${accessToken}`
         }});
         // console.log(response);
         if (response.ok) {  //response 객체의 ok 속성 통해 error 여부 확인 가능
