@@ -4,7 +4,7 @@ const inputBar = document.querySelector('form input[type = "text"]');
 const searchBtn = document.querySelector('form input[type = "button"]');
     //프로필 이미지와 이미지 확대 버튼 변수
 const profileImg = document.querySelector('.col1 img');
-const profileImgMagnifierBtn = document.querySelector('.col1 button');
+const profileUrl = document.querySelector('.col1 a');
     //개인 정보 변수
 const infoCompany = document.querySelector('.company td:nth-child(2)');
 const infoBlog = document.querySelector('.blog td:nth-child(2)');
@@ -18,15 +18,12 @@ const activityLevelFollowing = document.querySelector('#following');
     //최근 레포지토리 변수
 const repoListContainer = document.querySelector('#repo-list-container');
     //api key 값과 api url 변수
-const accessToken = "";
+const accessToken = "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";
 const apiUrl = "https://api.github.com/users/";
 
 //이벤트 함수 정의
     //검색 버튼을 누르게 되면, 깃헙 정보를 가져와 내부 정보를 html 요소에 넣는다.
 searchBtn.addEventListener('click', fetchGithubInfo);
-    //개인 프로필 사진 아래 버튼을 누르면, 개인 사진이 확대된다.
-// profileImgMagnifierBtn.addEventListener('click', magnifyImg);
-profileImgMagnifierBtn.addEventListener('click', magnifyProfileImg)
 //함수 정의
     //깃헙 정보를 가져와 html 요소에 넣어주는 함수(하위 함수 사용) => 소스코드 가독성을 위해서 promise all을 사용해서 정리할 것.  
 async function fetchGithubInfo() {
@@ -63,6 +60,7 @@ async function fetchGithubInfo() {
 function insertComponent(data) {
         //개인 프로필 사진 불러오기 
     profileImg.src = data.avatar_url;
+    profileUrl.href =  'https://github.com/' + data.login;
         //개인 프로필 정보 불러오기
     infoCompany.innerHTML = data.company;
     infoBlog.innerHTML = data.blog;
@@ -128,9 +126,3 @@ function creatRepoComponent (array, i) {
 
     repoListContainer.append(listEl);
 }
-    //프로필 이미지 확대
-function magnifyProfileImg(){
-    console.log(profileImg.src);
-    window.open(profileImg.src);
-}
-

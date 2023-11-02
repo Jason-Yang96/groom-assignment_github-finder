@@ -48,8 +48,11 @@ form input[type = 'button'] {
     height: 200px;
     border-radius: 10px;
 }
-.github-profile button {
-    display: block;
+.github-profile a {
+    text-decoration-line: none;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
     border: none;
     background-color: black;
     color: white;
