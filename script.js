@@ -18,8 +18,8 @@ const activityLevelFollowing = document.querySelector('#following');
     //최근 레포지토리 변수
 const repoListContainer = document.querySelector('#repo-list-container');
     //api key 값과 api url 변수
-const accessToken = "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";
-const apiUrl = "https://api.github.com/users/";
+const client_id = "a702d8baf477c5a970f7";
+const client_secret = "4a1baf29846ad4c294125147ef2c73003c251392";
 
 //이벤트 함수 정의
     //검색 버튼을 누르게 되면, 깃헙 정보를 가져와 내부 정보를 html 요소에 넣는다.
@@ -30,10 +30,9 @@ async function fetchGithubInfo() {
         //존재하지 않는 유저를 검색하는 경우 오류가 발생하고 검색 창 아래 오류 메시지를 띄움
     try {
         const githubId = inputBar.value;
-        const response = await fetch(apiUrl + githubId, {
-        headers : {
-            'Authorization' : `token ${accessToken}`
-        }});
+        const response = await fetch(
+            `https://api.github.com/users/${githubId}?client_id=${client_id}&client_secret=${client_secret}`
+        );
         // console.log(response);
         if (response.ok) {  //response 객체의 ok 속성 통해 error 여부 확인 가능
             const data = await response.json();
@@ -42,7 +41,9 @@ async function fetchGithubInfo() {
         } else {
             throw new Error("Github API request failed")
         }
-        const response2 = await fetch(apiUrl + githubId + '/repos');
+        const response2 = await fetch(
+            `https://api.github.com/users/${githubId}/repos?per_page=${5}&sort=created: asc&client_id=${client_id}&client_secret=${client_secret}`
+        );
         if (response2.ok) {
             const repo = await response2.json(); //repo 변수는 배열 객            
             createRepoComponentByLength(repo);
