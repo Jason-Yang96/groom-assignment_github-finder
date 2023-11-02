@@ -30,7 +30,7 @@ class UI {
   }
 
   createRepoComponent(repos) {
-    repos.forEach(function(repo){
+    repos.forEach((repo) => {
       const listEl = document.createElement('li');
       
       const repoTitle = document.createElement('span');
@@ -60,7 +60,7 @@ class UI {
       listEl.append(repoTitle);
       listEl.append(repoActivityLevelContainer);
 
-      repoListContainer.append(listEl);
+      this.repoListContainer.append(listEl); // this 빼먹었음
    }) 
   }
   clearProfile () {
