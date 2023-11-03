@@ -29,17 +29,17 @@ class UI {
     document.querySelector('.github-repos').style.display = 'block';
   }
 
-  createRepoComponent(repos) {
+  createRepoComponent(repos) { 
     repos.forEach((repo) => {
       const listEl = document.createElement('li');
       
       const repoTitle = document.createElement('span');
       repoTitle.classList.add('repo-title');
       repoTitle.innerHTML = repo.name;
-
+      
       const repoActivityLevelContainer = document.createElement('div');
       repoActivityLevelContainer.classList.add('repo-activity-level-container');
-
+      
       const repoActivityLevelStar = document.createElement('span');
       repoActivityLevelStar.classList.add('star');
       repoActivityLevelStar.innerHTML = "Stars: " + repo.stargazers_count;
@@ -51,19 +51,23 @@ class UI {
       const repoActivityLevelFork = document.createElement('span');
       repoActivityLevelFork.classList.add('fork');
       repoActivityLevelFork.innerHTML = "Forks: " + repo.forks_count;
-
-          //리스트 요소에 들어가야 하는 요소 삽입하기
+      
+      //리스트 요소에 들어가야 하는 요소 삽입하기
       repoActivityLevelContainer.append(repoActivityLevelStar);
       repoActivityLevelContainer.append(repoActivityLevelWatching);
       repoActivityLevelContainer.append(repoActivityLevelFork);
-
+      
       listEl.append(repoTitle);
       listEl.append(repoActivityLevelContainer);
-
+      
+      // console.log("error:"  + this.repoListContainer);
       this.repoListContainer.append(listEl); // this 빼먹었음
-   }) 
+    }) 
   }
   clearProfile () {
     this.repoListContainer.innerHTML = ''
   }
 }
+// if (repos.length > 5) {
+//   const repos = repos.slice(0,5);
+// } 

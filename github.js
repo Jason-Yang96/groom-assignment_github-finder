@@ -2,7 +2,7 @@ class Github {
   constructor(){
     this.clientId = "a702d8baf477c5a970f7";
     this.clientSecret = "4a1baf29846ad4c294125147ef2c73003c251392";
-    this.accessToken = "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";
+    this.accessToken = "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";
     this.apiUrl = "https://api.github.com/users/";
     this.reposCount = 5;
     this.reposSortWay = 'created:asc'
